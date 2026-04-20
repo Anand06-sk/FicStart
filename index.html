@@ -2376,6 +2376,15 @@
             ),
           );
 
+        // Close hamburger menu when clicking outside
+        document.addEventListener("click", function(event) {
+          const isHamburger = hamburger.contains(event.target);
+          const isNavLinks = navLinks.contains(event.target);
+          if (!isHamburger && !isNavLinks && navLinks.classList.contains("open")) {
+            navLinks.classList.remove("open");
+          }
+        });
+
         /* ===== FADE IN OBSERVER ===== */
         const io = new IntersectionObserver(
           (entries) =>
